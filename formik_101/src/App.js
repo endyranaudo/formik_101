@@ -1,12 +1,8 @@
 import React from 'react';
-// import {withFormik} from 'formik';
-import './App.css';
+import SignupForm from './components/SignupFrom';
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
-}
+const App = () => (
+  <SignupForm />
+)
 
 export default App;
