@@ -1,19 +1,16 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { Formik, Field } from "formik";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { Formik, Field } from 'formik';
 import './App.css';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const required = value => (value ? undefined : "Required");
+const required = value => (value ? undefined : 'Required');
 
-const Error = ({ name }) => (
-  <Field
-    name={name}
-    render={({ form: { touched, errors } }) =>
-      touched[name] && errors[name] ? <span>{errors[name]}</span> : null
-    }
-  />
+const Error = ({ name }) => ({ form: { touched, errors } }) => (
+  <Field name={name}>
+    {touched[name] && errors[name] ? <span>{errors[name]}</span> : null}
+  </Field>
 );
 
 class Wizard extends Component {
@@ -99,10 +96,10 @@ const App = () => (
     <h1>Multistep / Form Wizard </h1>
     <Wizard
       initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        favoriteColor: ""
+        firstName: '',
+        lastName: '',
+        email: '',
+        favoriteColor: ''
       }}
       onSubmit={(values, actions) => {
         console.log(actions);
@@ -140,10 +137,10 @@ const App = () => (
         validate={values => {
           const errors = {};
           if (!values.email) {
-            errors.email = "Required";
+            errors.email = 'Required';
           }
           if (!values.favoriteColor) {
-            errors.favoriteColor = "Required";
+            errors.favoriteColor = 'Required';
           }
           return errors;
         }}
@@ -173,6 +170,6 @@ const App = () => (
   </div>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
 
 export default App;
